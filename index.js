@@ -3,6 +3,7 @@
     Challenge 2: Return cats for each individual user
 */
 
+const cors = require('cors');
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
@@ -48,6 +49,7 @@ const root = {
 
 
 const app = express();
+app.use(cors());
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
